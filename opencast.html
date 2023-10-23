@@ -8,13 +8,15 @@
   <body>
 <div id="qrcode"></div>
 <label>Text to be encoded as the QR-code:<br>
-<textarea placeholder="QR encoded text here" id="message">https://opencast.org/</textarea></label>
+<textarea placeholder="QR encoded text here" id="message" rows="2" cols="60">https://opencast.org/</textarea></label>
 
 <script type="text/javascript">
 (function() {
 		var $message = document.getElementById('message');
+		var $qrcode = document.getElementById('qrcode');
 
 		function handleInput() {
+			$qrcode.innerHTML = '';
 			var options = {
 				text: $message.value,
 				width: 720,
