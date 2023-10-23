@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>QR-Code Generator in Opencast color scheme based on ushelp/EasyQRCodeJS</title>
+    <script src="dist/easy.qrcode.min.js" charset="utf-8"></script>
+  </head>
+  <body>
+<div id="qrcode"></div>
+<label>Text to be encoded as the QR-code:<br>
+<textarea placeholder="QR encoded text here" id="message">https://opencast.org/</textarea></label>
+
+<script type="text/javascript">
+(function() {
+		var $message = document.getElementById('message');
+
+		function handleInput() {
+			var options = {
+				text: $message.value,
+				width: 720,
+				height: 720,
+				colorDark: "#24425d",
+				colorLight: "#fff",
+				correctLevel: QRCode.CorrectLevel.H, // L, M, Q, H
+				dotScale: .8, // For body block, must be greater than 0, less than or equal to 1. default is 1
+
+				dotScaleTiming: 1, // Dafault for timing block , must be greater than 0, less than or equal to 1. default is 1
+				dotScaleTiming_H: undefined, // For horizontal timing block, must be greater than 0, less than or equal to 1. default is 1
+				dotScaleTiming_V: undefined, // For vertical timing block, must be greater than 0, less than or equal to 1. default is 1
+
+				dotScaleA: 1, // Dafault for alignment block, must be greater than 0, less than or equal to 1. default is 1
+				dotScaleAO: undefined, // For alignment outer block, must be greater than 0, less than or equal to 1. default is 1
+				dotScaleAI: undefined, // For alignment inner block, must be greater than 0, less than or equal to 1. default is 1
+
+				quietZone: 0,
+				quietZoneColor: "#fff",
+
+				PO: '#4bb07b', // Global Posotion Outer color. if not set, the defaut is `colorDark`
+				PI: '#4bb07b', // Global Posotion Inner color. if not set, the defaut is `colorDark`
+				PO_TL: '#000', // Posotion Outer color - Top Left 
+				PI_TL: '', // Posotion Inner color - Top Left 
+				PO_TR: '', // Posotion Outer color - Top Right 
+				PI_TR: '', // Posotion Inner color - Top Right 
+				PO_BL: '', // Posotion Outer color - Bottom Left 
+				PI_BL: '', // Posotion Inner color - Bottom Left 
+				AO: '', // Alignment Outer. if not set, the defaut is `colorDark`
+				AI: '', // Alignment Inner. if not set, the defaut is `colorDark`
+				timing: '#4bb07b', // Global Timing color. if not set, the defaut is `colorDark`
+				timing_H: '', // Horizontal timing color
+				timing_V: '', // Vertical timing color
+				drawer: 'canvas', // Which drawing method to use. 'canvas', 'svg'. default is 'canvas'
+			};
+			// Create QRCode Object
+			new QRCode(document.getElementById("qrcode"), options);
+		}
+
+		$message.addEventListener('input', handleInput);
+		handleInput();
+}());
+</script>
+
+  </body>
+</html>
+
